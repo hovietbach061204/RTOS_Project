@@ -76,6 +76,8 @@ void humidifier_task()
                 Timer_Set(S, green);
                 digitalWrite(HUMIDIFIER_LED1, HIGH);
                 digitalWrite(HUMIDIFIER_LED2, LOW);
+            }else{
+                q = INIT;
             }
         }
         break;
