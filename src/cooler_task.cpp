@@ -37,13 +37,14 @@ void cooler_task() {
                 Timer_Set(0, 500); // 5s -> 500 ticks of 10ms
                 cooler_state = COOLER_ACTIVE;
                 Serial.println("[Cooler] COOLING started. LEDs ON. Timer set for 5s.");
+            }else{
+                digitalWrite(COOLER_LED1, LOW);
+                digitalWrite(COOLER_LED2, LOW);
             }
             break;
 
         case COOLER_ACTIVE:
             if (Timer_IsExpired(0)) {
-                digitalWrite(COOLER_LED1, LOW);
-                digitalWrite(COOLER_LED2, LOW);
                 cooler_state = COOLER_IDLE;
                 Serial.println("[Cooler] Cooling complete. LEDs OFF. Returning to IDLE.");
             } else {
